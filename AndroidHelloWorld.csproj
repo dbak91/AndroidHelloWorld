@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net10.0-android36.0</TargetFramework>
@@ -22,10 +22,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <MauiIcon Include="Resources\AppIcon\appicon.png" />
+    <MauiIcon Include="Resources\AppIcon\appicon.svg" />
   </ItemGroup>
 
-  <Import Project="release-signing\AndroidHelloWorld.signing.props"
-          Condition="Exists('release-signing\AndroidHelloWorld.signing.props')" />
+  <ItemGroup>
+    <MauiXaml Update="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+  </ItemGroup>
+
+  <Import Project="release-signing\AndroidHelloWorld.signing.props" Condition="Exists('release-signing\AndroidHelloWorld.signing.props')" />
 
 </Project>
